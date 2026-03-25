@@ -1,0 +1,150 @@
+:root {
+  --color-bg:       #050814;
+  --color-text:     #e6edf3;
+  --color-border:   #eeeeee;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+main {
+  padding-bottom: 20vh;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--color-bg);
+  border-bottom: 2px solid #eee;
+  text-align: center;
+}
+  /*overflow: hidden;
+}
+
+header hr {
+  margin: 0;
+  position: sticky;
+}*/
+
+header h1 {
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("cloud_logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+main div {
+  border: 2px solid #eee;
+  border-bottom-right-radius: 40%;
+  border-top-left-radius: 40%;
+  border-bottom-left-radius: 8%;
+  border-top-right-radius: 24%;
+  margin: 4%;
+  margin-left:8%;
+  margin-right:8%;
+  padding: 4%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+
+  box-shadow: 0px 0px 32px 32px rgb(0 0 255 / 0.2);
+}
+
+div.game {
+  background-color: rgba(0, 200, 0, 0.6);
+  overflow: hidden;
+}
+
+div.lib {
+  background-color: rgba(200, 0, 0, 0.6);
+}
+
+div.demo {
+  background-color: rgba(0, 150, 150, 0.6);
+  padding-bottom: 4%;
+}
+
+h1 {
+  font-family: "DejaVu Sans", sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+h2 {
+  font-family: "DejaVu Sans", sans-serif;
+}
+
+main > h2 {
+  text-align: center;
+}
+
+div h2 {
+  text-align: center;
+}
+
+div > a {
+  border: 2px solid #eee;
+  border-bottom-right-radius: 40%;
+  border-top-left-radius: 40%;
+  border-bottom-left-radius: 20%;
+  border-top-right-radius: 24%;
+  padding: 0.5%;
+  background-color: rgba(55, 200, 55, 0.6);
+
+  float: right;
+  margin-right: 8%;
+  margin-left: 3%;
+}
+
+div.demo > a { background-color: rgba(55, 175, 175, 0.6); }
+
+/*div.game > a {
+  float: right;
+  margin-right: 8%;
+  margin-left: 3%;
+}
+
+div.demo > a {
+  float: right;
+  margin-right: 24%;
+}*/
+
+div p {
+  text-indent: 1.5em;
+  font-family: "Monaco", monospace;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  float: left;
+  margin-right: 1%;
+
+  mask-image: radial-gradient(ellipse, black 60%, transparent 75%);
+}
+
+#reducedTopMargin {
+  margin-top: 1%;
+}
+
+footer {
+  text-align: center;
+}
