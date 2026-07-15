@@ -1158,6 +1158,8 @@ body.nav-about .drawer__item--about .drawer__text { color: var(--text); }
 .tl-card--red .changelog li .arw,
 .tl-card--red .tl-grouplabel--major,
 .tl-card--red .minor-toggle__arrow { color: #d8453b; }
+/* minor-change bullet arrows stay grey even in red cards (matches gold cards) */
+.tl-card--red .changelog--minor li .arw { color: var(--faint-2); }
 .minor.is-open .minor-wrap { max-height: 320px; opacity: 1; }
 
 .tl-card--old {
