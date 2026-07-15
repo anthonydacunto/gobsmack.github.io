@@ -82,7 +82,8 @@
       var rel = R[host.getAttribute('data-verdate')];
       if (!rel) return;
       host.innerHTML = verDate(rel) +
-        (rel.standalone ? ' <span class="standalone">· Standalone Release</span>' : '');
+        (rel.standalone ? ' <span class="standalone">· Standalone Release</span>' : '') +
+        (rel.subpage ? ' · <a class="addl-link" href="' + rel.subpage + '">Additional Releases</a>' : '');
     });
 
     // mobile eyebrows:  <div data-eyebrow="mvp" data-eyebrow-prefix="GAME"></div>
@@ -92,6 +93,69 @@
       var prefix = host.getAttribute('data-eyebrow-prefix') || '';
       host.textContent = (prefix ? prefix + ' · ' : '') + verDate(rel);
     });
+  }
+
+  /* ---- dev-log rendering ------------------------------------------------ */
+  function ytEmbedSrc(url) {
+    var m = url.match(/(?:v=|youtu\.be\/)([\w-]{11})/);
+    return m ? 'https://www.youtube-nocookie.com/embed/' + m[1] : url;
+  }
+  function dlMedia(media, height) {
+    if (!media) return '';
+    if (media.kind === 'video') {
+      return '<div class="dl-media dl-media--video" style="height:' + height + 'px;">' +
+        '<iframe src="' + ytEmbedSrc(media.src) + '" title="Dev-log video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+    }
+    // media.scale upscales small pixel art (renders at natural size otherwise)
+    var zoom = media.scale ? ' style="transform: scale(' + media.scale + '); image-rendering: pixelated;"' : '';
+    return '<div class="dl-media dl-media--image" style="height:' + height + 'px;">' +
+      '<img src="' + media.src + '" alt="' + (media.alt || '') + '"' + zoom + '></div>';
+  }
+  function dlTags(tags) {
+    return (tags || []).map(function (t) { return '<span class="dl-tag">' + t + '</span>'; }).join('<span class="dl-sep">&nbsp;·&nbsp;</span>');
+  }
+  function dlCard(entry, mediaHeight) {
+    return '<div class="dl-card" data-rd-card="devlog">' +
+      '<div class="dl-glow" data-rd-glow></div>' +
+      '<div class="dl-card__grad" data-rd-frame><div class="dl-card__body">' + dlMedia(entry.media, mediaHeight) +
+      '<div class="dl-content"><div class="dl-meta">' + entry.date + '<span class="dl-sep">&nbsp;·&nbsp;</span>' + dlTags(entry.tags) + '</div>' +
+      '<div class="dl-title">' + entry.title + '</div>' +
+      '<div class="dl-excerpt">' + entry.excerpt + '</div></div></div></div></div>';
+  }
+
+  function dlMobileCard(entry) {
+    var tile = entry.media
+      ? (entry.media.kind === 'image'
+          ? '<div class="m-card__tile dl-ph dl-ph--img"><img src="' + entry.media.src + '" alt="' + (entry.media.alt || '') + '"></div>'
+          : '<div class="m-card__tile dl-ph">VIDEO</div>')
+      : '<div class="m-card__tile dl-ph">NO&nbsp;MEDIA</div>';
+    return '<div class="m-card dl-gray">' +
+      '<div class="m-card__head" data-toggle-card role="button">' + tile +
+      '<div class="m-card__meta"><div class="m-card__eyebrow">DEV-LOG · ' + entry.date + ' · ' + (entry.tags || []).join(' · ') + '</div>' +
+      '<div class="m-card__title">' + entry.title + '</div></div>' +
+      '<span class="m-caret">›</span></div>' +
+      '<div class="m-drop"><div class="m-drop__inner"><div class="m-drop__pad">' +
+      (entry.media ? dlMedia(entry.media, 150) : '') +
+      '<div class="dl-m-excerpt">' + entry.excerpt + '</div>' +
+      '</div></div></div></div>';
+  }
+
+  function renderDevlog() {
+    var D = window.DEVLOG || [];
+    if (!D.length) return;
+    var featured = D.find(function (e) { return e.featured; }) || D[0];
+
+    var teaser = document.querySelector('[data-devlog-teaser]');
+    if (teaser) teaser.innerHTML = dlCard(featured, 220);
+
+    var teaserM = document.querySelector('[data-devlog-teaser-m]');
+    if (teaserM) teaserM.innerHTML = dlMobileCard(featured);
+
+    var list = document.querySelector('[data-devlog-list]');
+    if (list) list.innerHTML = D.map(function (e) { return dlCard(e, 190); }).join('');
+
+    var listM = document.querySelector('[data-devlog-list-m]');
+    if (listM) listM.innerHTML = D.map(function (e) { return dlMobileCard(e); }).join('');
   }
 
   /* ---- dynamic greeting ------------------------------------------------- */
@@ -106,6 +170,11 @@
   }
 
   /* ---- desktop scroll sheen -------------------------------------------- */
+  var FX_COLORS = {
+    demo:   { rgb: '192,50,44',   bright: '#c0322c', muted: '#3a1d20' },
+    game:   { rgb: '207,138,60',  bright: '#cf8a3c', muted: '#3a2c1c' },
+    devlog: { rgb: '154,157,159', bright: '#9a9d9f', muted: '#2b2c2d' },
+  };
   function updateFX() {
     var vh = window.innerHeight, center = vh / 2;
     document.querySelectorAll('[data-rd-card]').forEach(function (card) {
@@ -115,12 +184,12 @@
       var c = Math.max(0, 1 - dist / (vh * 0.62));
       card.style.opacity = (0.6 + 0.4 * c).toFixed(3);
       if (reduceMotion) return; // keep opacity easing, skip the moving gradient
-      var demo = card.getAttribute('data-rd-card') === 'demo';
-      var rgb = demo ? '192,50,44' : '207,138,60';
+      var col = FX_COLORS[card.getAttribute('data-rd-card')] || FX_COLORS.game;
+      var rgb = col.rgb;
       var frame = card.querySelector('[data-rd-frame]');
       if (!frame) return;
-      var bright = demo ? '#c0322c' : '#cf8a3c';
-      var muted = demo ? '#3a1d20' : '#3a2c1c';
+      var bright = col.bright;
+      var muted = col.muted;
       var skew = 118;
       var phase = (rect.top + rect.height / 2 - center) / vh;
       var pos = 50 - phase * 110;
@@ -279,6 +348,7 @@
   /* ---- boot ------------------------------------------------------------- */
   function boot() {
     render();
+    renderDevlog();
     greeting();
     initDrawer();
     initCards();

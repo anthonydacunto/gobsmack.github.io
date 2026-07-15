@@ -17,11 +17,11 @@
       <div class="site-header__inner">
         <a href="index.html" class="lockup">
           <span class="mark" role="img" aria-label="RazorDove"></span>
-          <span class="wordmark">RAZORDOVE <span class="g">GAMES</span></span>
         </a>
         <nav class="nav">
           <a href="index.html" class="nav-link">Home</a>
           <a href="releases.html" class="nav-link is-active">Releases</a>
+          <a href="devlog.html" class="nav-link">Dev-log</a>
           <a href="about.html" class="nav-link">About</a>
         </nav>
         <div class="dashes"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
@@ -38,13 +38,15 @@
           <div class="sub-head__tile"><img src="assets/buttongame-slime.png" alt="ButtonGame Rollback"></div>
           <div class="sub-head__main">
             <div class="tick tick--left" style="margin-bottom:18px;"></div>
-            <div class="sub-title sub-title--bg">ButtonGame Rollback</div>
-            <div class="sub-sub sub-sub--red">Rollback Demonstration</div>
+            <div class="sub-titleline">
+              <div class="sub-title sub-title--bg">ButtonGame Rollback</div>
+              <div class="sub-sub sub-sub--red">Rollback Demonstration</div>
+            </div>
             <div class="sub-hint">Complete build history.</div>
           </div>
           <div class="sub-count">
             <div class="sub-count__label">Builds</div>
-            <div class="sub-count__n">01</div>
+            <div class="sub-count__n">02</div>
           </div>
         </div>
 
@@ -52,7 +54,7 @@
           <div class="timeline__spine timeline__spine--red"></div>
           <div class="timeline__list">
 
-            <!-- v0.4 — latest -->
+            <!-- v0.5 — latest -->
             <div class="tl-row">
               <div class="tl-node tl-node--latest"><span class="node-dot node-dot--red"></span></div>
               <div class="tl-card tl-card--red">
@@ -60,16 +62,59 @@
                 <span style="position:absolute; bottom:-1px; right:-1px; width:17px; height:17px; border-bottom:2px solid #d8453b; border-right:2px solid #d8453b; border-bottom-right-radius:7px;"></span>
                 <div class="tl-card__inner">
                   <div class="tl-verhead">
-                    <span class="tl-ver">v0.4</span>
+                    <span class="tl-ver">v0.5</span>
                     <span class="tl-latest tl-latest--red">Latest</span>
-                    <span class="tl-date">June 2026</span>
+                    <span class="tl-date">July 2026</span>
                   </div>
-                  <ul class="changelog" style="margin:18px 0 0;">
-                    <li><span class="arw" style="color:#e0554b;">›</span><span>Initial Release.</span></li>
-                  </ul>
+                  <div class="tl-group">
+                    <div>
+                      <div class="tl-grouplabel tl-grouplabel--major">Major changes</div>
+                      <ul class="changelog">
+                        <li><span class="arw">›</span><span>Network packets enriched to sync versions and calculate lead.</span></li>
+                        <li><span class="arw">›</span><span>Rollback buffer enriched to improve frame confirmation.</span></li>
+                        <li><span class="arw">›</span><span>Serialized snapshots sent over the network now only contain verified content.</span></li>
+                        <li><span class="arw">›</span><span>Hard re-sync recovery path has been added for players too far behind.</span></li>
+                        <li><span class="arw">›</span><span>Frame-stall is now dynamic.</span></li>
+                        <li><span class="arw">›</span><span>Mid-match disconnect handling has been added.</span></li>
+                        <li><span class="arw">›</span><span>Now prints log files.</span></li>
+                      </ul>
+                    </div>
+                    <div class="minor">
+                      <div class="minor-toggle" data-minor-toggle role="button" tabindex="0">
+                        <span class="minor-toggle__label">Minor changes</span>
+                        <span class="minor-toggle__arrow">▸</span>
+                        <span class="minor-toggle__count">(3)</span>
+                      </div>
+                      <div class="minor-wrap">
+                        <ul class="changelog changelog--minor">
+                          <li><span class="arw">›</span><span>Failed connection menu fix.</span></li>
+                          <li><span class="arw">›</span><span>Network tweaks.</span></li>
+                          <li><span class="arw">›</span><span>Console log tweaks.</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                   <div class="pillrow" data-pills="bg"></div>
-                  <div class="tl-verlabel">v0.4</div>
+                  <div class="tl-verlabel">ButtonGame_Rollback-v0.5</div>
                 </div>
+              </div>
+            </div>
+
+            <!-- v0.4 -->
+            <div class="tl-row">
+              <div class="tl-node tl-node--old"><span class="node-dot node-dot--old node-dot--old-red"></span></div>
+              <div class="tl-card--old tl-card--old-red">
+                <div class="tl-verhead"><span class="tl-ver--old">v0.4</span></div>
+                <div class="tl-date--old">June 2026</div>
+                <ul class="changelog changelog--old">
+                  <li><span class="arw">›</span><span>Initial Release.</span></li>
+                </ul>
+                <div style="display:flex; align-items:center; gap:14px; margin-top:18px; flex-wrap:wrap;">
+                  <a href="https://github.com/anthonydacunto/buttongame_rollback/releases/download/v0.4/ButtonGame_Rollback-v0.4w32.zip" target="_blank" rel="noopener noreferrer" class="dl-arc dl-arc--red"><span class="os">WIN&nbsp;x32</span><span class="sz">65 MB</span><span class="lbl">Download →</span></a>
+                  <a href="https://github.com/anthonydacunto/buttongame_rollback/releases/download/v0.4/ButtonGame_Rollback-v0.4m.zip" target="_blank" rel="noopener noreferrer" class="dl-arc dl-arc--red"><span class="os">MAC</span><span class="sz">119 MB</span><span class="lbl">Download →</span></a>
+                  <a href="https://github.com/anthonydacunto/buttongame_rollback/releases/download/v0.4/ButtonGame_Rollback-v0.4l.zip" target="_blank" rel="noopener noreferrer" class="dl-arc dl-arc--red"><span class="os">LINUX</span><span class="sz">57.1 MB</span><span class="lbl">Download →</span></a>
+                </div>
+                <div class="tl-verlabel">ButtonGame_Rollback-v0.4</div>
               </div>
             </div>
 

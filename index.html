@@ -17,13 +17,14 @@
   <div class="shell d-only">
     <header class="site-header">
       <div class="site-header__inner">
-        <a href="index.html" class="lockup">
+        <div class="lockup lockup--static">
           <span class="mark" role="img" aria-label="RazorDove"></span>
           <span class="wordmark">RAZORDOVE <span class="g">GAMES</span></span>
-        </a>
+        </div>
         <nav class="nav">
           <a href="index.html" class="nav-link is-active">Home</a>
           <a href="releases.html" class="nav-link">Releases</a>
+          <a href="devlog.html" class="nav-link">Dev-log</a>
           <a href="about.html" class="nav-link">About</a>
         </nav>
         <div class="dashes"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
@@ -54,7 +55,6 @@
                     <div class="card__desc">A minimal demonstration of a 3D tournament fighter — 20+ moves, a complete control schema with button configuration, air-combos, and a programmable training dummy. Duke it out in Versus or sharpen up in Practice.</div>
                     <div class="pillrow" data-pills="mvp"></div>
                     <div class="verline" data-verdate="mvp"></div>
-                    <a href="mvp.html" class="addl-link">Additional Releases</a>
                   </div>
                 </div>
               </div>
@@ -63,10 +63,8 @@
 
           <div class="devlog">
             <div class="eyebrow">Dev-log</div>
-            <div class="devlog__panel">
-              <div class="devlog__title">No entries yet</div>
-              <div class="devlog__sub">Build breakdowns, system deep-dives and release notes will be posted here.</div>
-            </div>
+            <div data-devlog-teaser></div>
+            <a href="devlog.html" class="devlog__viewall">View all entries →</a>
           </div>
         </section>
       </div>
@@ -86,10 +84,10 @@
   <!-- ===================== MOBILE ===================== -->
   <div class="shell m-only">
     <header class="m-header">
-      <a href="index.html" class="m-lockup">
+      <div class="m-lockup m-lockup--static">
         <span class="m-mark" role="img" aria-label="RazorDove"></span>
         <span class="m-wordmark">RAZORDOVE <span class="g">GAMES</span></span>
-      </a>
+      </div>
       <button class="hamburger" data-menu-open aria-label="Open menu">
         <span class="b1"></span><span class="b2"></span><span class="b3"></span>
       </button>
@@ -123,10 +121,8 @@
       </div>
       <div class="m-block" style="padding-bottom:40px;">
         <div class="m-eyebrow">Dev-log</div>
-        <div class="devlog__panel">
-          <div class="devlog__title">No entries yet</div>
-          <div class="devlog__sub">Build breakdowns, system deep-dives and release notes will be posted here.</div>
-        </div>
+        <div data-devlog-teaser-m></div>
+        <a href="devlog.html" class="dl-m-viewall">View all entries →</a>
       </div>
     </main>
 
@@ -144,7 +140,8 @@
       <div class="drawer__nav">
         <a href="index.html" class="drawer__item drawer__item--home"><span class="drawer__num">01</span><span class="drawer__text">Home</span></a>
         <a href="releases.html" class="drawer__item drawer__item--releases"><span class="drawer__num">02</span><span class="drawer__text">Releases</span></a>
-        <a href="about.html" class="drawer__item drawer__item--about"><span class="drawer__num">03</span><span class="drawer__text">About</span></a>
+        <a href="devlog.html" class="drawer__item drawer__item--devlog"><span class="drawer__num">03</span><span class="drawer__text">Dev-log</span></a>
+        <a href="about.html" class="drawer__item drawer__item--about"><span class="drawer__num">04</span><span class="drawer__text">About</span></a>
       </div>
       <div class="drawer__foot">
         <a href="https://github.com/anthonydacunto" target="_blank" rel="noopener noreferrer" class="drawer__gh" aria-label="GitHub">
