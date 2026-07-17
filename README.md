@@ -40,8 +40,11 @@ Inline excerpt links: `class="link-demo"` (red) for demo pages,
 
 ## Layout
 
-- One breakpoint at **860px** (CSS media query). Each page ships both a desktop
-  and a mobile layout; the query shows one and hides the other.
+- One breakpoint at **860px** (CSS media query). The four main pages ship both a
+  desktop and a mobile layout; the query shows one and hides the other.
+- The two build-history sub-pages (`mvp.html`, `buttongame.html`) are
+  **desktop-only**: a head script redirects mobile viewports (same breakpoint)
+  to `releases.html`, whose mobile cards cover every build.
 - Real URLs, real files — deep links and refresh work with no SPA/router hacks.
 
 ## Deploy (GitHub Pages)
