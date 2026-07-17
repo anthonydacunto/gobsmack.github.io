@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Saira:wght@300;400;500;600&family=Russo+One&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/razordove-logo.png">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* Build-history pages have no mobile variant — releases.html covers mobile.
+       Same breakpoint as the .d-only/.m-only layout switch in style.css. */
+    if (window.matchMedia('(max-width: 859.98px)').matches) location.replace('releases.html');
+  </script>
 </head>
 <body class="nav-releases">
   <div class="shell">
